@@ -1,0 +1,8 @@
+{
+  "name": "Remix: MetroMedia Technologies MENA",
+  "description": "Premium industrial technology corporate website for MetroMedia Technologies MENA (MMT), leading large-format visual engineering experiences in GCC \u0026 MENA.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
