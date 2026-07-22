@@ -29,7 +29,7 @@ export default function App() {
   };
 
   return (
-    <div className="bg-dark-graphite text-gray-200 min-h-screen flex flex-col justify-between selection:bg-electric-blue selection:text-black relative">
+    <div className="bg-[#f5f0e6] text-[#1b2234] min-h-screen flex flex-col justify-between selection:bg-[#0090e7] selection:text-white relative">
       {/* 1. Global Navigation */}
       <Header />
 
@@ -55,7 +55,7 @@ export default function App() {
       </main>
 
       {/* 3. Luxury Corporate Footer */}
-      <footer className="bg-black border-t border-white/5 py-16 lg:py-24 relative overflow-hidden" id="mmt-footer">
+      <footer className="bg-charcoal border-t border-white/5 py-16 lg:py-24 relative overflow-hidden" id="mmt-footer">
         <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-mmt-blue/30 to-transparent" />
         
         <div className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-16 xl:px-24 w-full flex flex-col gap-12">
