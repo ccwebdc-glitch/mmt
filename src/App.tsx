@@ -13,6 +13,7 @@ import Facility from "./components/Facility";
 import DayNightSlider from "./components/DayNightSlider";
 import ComparisonTable from "./components/ComparisonTable";
 import Portfolio from "./components/Portfolio";
+import WorkSlider from "./components/WorkSlider";
 import Industries from "./components/Industries";
 import GlobalPresence from "./components/GlobalPresence";
 import Faq from "./components/Faq";
@@ -48,6 +49,7 @@ export default function App() {
         <DayNightSlider />
         <ComparisonTable />
         <Portfolio />
+        <WorkSlider />
         <Industries />
         <GlobalPresence />
         <Faq />

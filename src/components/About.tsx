@@ -1,7 +1,11 @@
-import React from "react";
-import { Shield, Sparkles, Target, Eye, Compass } from "lucide-react";
+import React, { useState } from "react";
+import { Shield, Sparkles, Target, Eye, Compass, ZoomIn, X } from "lucide-react";
+import mdNoteImage from "../assets/images/mmt-6.jpg";
+import AboutFourStaticPhotos from "./AboutFourStaticPhotos";
 
 export default function About() {
+  const [lightboxData, setLightboxData] = useState<{ url: string; title: string } | null>(null);
+
   return (
     <section id="about" className="py-24 sm:py-32 bg-dark-graphite relative overflow-hidden">
       {/* Background radial glow */}
@@ -50,6 +54,11 @@ export default function About() {
               </p>
             </div>
           </div>
+
+          {/* 4 Static Photo Gallery inside the INTRODUCTION section */}
+          <div className="mt-12 pt-8 border-t border-white/10">
+            <AboutFourStaticPhotos />
+          </div>
         </div>
 
         {/* 2. Main Company Story & Blueprint Split */}
@@ -79,7 +88,7 @@ export default function About() {
               <p>
                 Today, MMT proudly serves clients throughout the GCC and MENA region from its advanced production facility in Dubai, combining decades of international expertise with cutting-edge manufacturing technologies specifically engineered for the region's demanding environmental conditions.
               </p>
-              <p className="border-t border-white/5 pt-6 text-xs font-mono text-gray-500 uppercase tracking-widest leading-loose">
+              <p className="border-t border-white/5 pt-4 text-xs font-mono text-gray-500 uppercase tracking-widest leading-loose">
                 As a proud member of the Spectacular MMT Group and in association with Circle Graphics USA, MMT continues to set new benchmarks in outdoor visual excellence.
               </p>
             </div>
@@ -101,7 +110,7 @@ export default function About() {
               </div>
 
               {/* Vector Blueprint */}
-              <div className="relative border border-white/5 rounded-xl bg-dark-graphite p-6 h-60 flex flex-col justify-between overflow-hidden relative z-10 mb-6">
+              <div className="relative border border-white/5 rounded-xl bg-dark-graphite p-6 h-60 flex flex-col justify-between overflow-hidden z-10 mb-6">
                 <div className="absolute left-0 right-0 h-[1px] bg-electric-blue/30 shadow-[0_0_8px_rgba(0,229,255,0.6)] animate-pulse" style={{ top: "45%" }} />
                 
                 <svg viewBox="0 0 400 180" className="w-full h-full opacity-50 text-mmt-blue" fill="none">
@@ -134,6 +143,69 @@ export default function About() {
               </div>
             </div>
           </div>
+
+          {/* Full-Width Side-by-Side Images section in Company Story */}
+          <div className="lg:col-span-12 mt-6" id="about-gallery-fullwidth">
+            <div className="flex items-center justify-between text-xs font-mono mb-4">
+              <span className="text-electric-blue uppercase tracking-widest font-semibold flex items-center gap-2 text-xs sm:text-sm">
+                <Sparkles className="h-4 w-4 text-[#f25c05]" />
+                 A Note From MR. Rajib Das,Managing Director & Mr. Asish Chakrabarti,Operation Manager
+              </span>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+
+              {/* Image 1: Managing Director's Note */}
+              <div 
+               onClick={() => setLightboxData({ url: mdNoteImage, title: "A Note from Rajib Das, Managing Director" })}
+                className="w-full aspect-[16/9] relative rounded-2xl overflow-hidden border border-white/20 bg-black shadow-2xl cursor-pointer group transition-all duration-300 hover:border-[#0090e7] hover:scale-[1.01]"
+              >
+                <img
+                  src={mdNoteImage}
+                  alt="A Note from Rajib Das, Managing Director"
+                  referrerPolicy="no-referrer"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent opacity-80 group-hover:opacity-40 transition-opacity pointer-events-none" />
+                
+                <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between z-10 text-white pointer-events-none">
+                  <span className="text-sm sm:text-base font-display font-medium text-white drop-shadow-md truncate max-w-[70%]">
+                    A Note from Rajib Das, Managing Director
+                  </span>
+                  <div className="p-1.5 px-3.5 rounded-full bg-black/80 hover:bg-[#0090e7] text-white border border-white/20 backdrop-blur-md transition-colors shadow-md flex items-center gap-1.5 text-xs font-mono pointer-events-auto">
+                    <ZoomIn className="h-4 w-4 text-[#0090e7]" />
+                    <span>Expand</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Image 2: MMT Production Facility */}
+              <div 
+                 onClick={() => setLightboxData({ url: "https://res.cloudinary.com/juhfehwi/image/upload/v1784719525/mmt-7_w981ck.jpg", title: "A Note From Asish Chakrabarti, Operation Manager" })}
+                className="w-full aspect-[16/9] relative rounded-2xl overflow-hidden border border-white/20 bg-black shadow-2xl cursor-pointer group transition-all duration-300 hover:border-[#0090e7] hover:scale-[1.01]"
+              >
+                <img
+                  src="https://res.cloudinary.com/juhfehwi/image/upload/v1784719525/mmt-7_w981ck.jpg"
+                  alt=" A Note From Asish Chakrabarti, Operation Manager"
+                  referrerPolicy="no-referrer"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent opacity-80 group-hover:opacity-40 transition-opacity pointer-events-none" />
+                
+                <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between z-10 text-white pointer-events-none">
+                  <span className="text-sm sm:text-base font-display font-medium text-white drop-shadow-md truncate max-w-[70%]">
+                   A Note from Asish Chakrabarti, Operation Manager
+                  </span>
+                  <div className="p-1.5 px-3.5 rounded-full bg-black/80 hover:bg-[#0090e7] text-white border border-white/20 backdrop-blur-md transition-colors shadow-md flex items-center gap-1.5 text-xs font-mono pointer-events-auto">
+                    <ZoomIn className="h-4 w-4 text-[#0090e7]" />
+                    <span>Expand</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+ 
 
         </div>
 
@@ -213,6 +285,34 @@ export default function About() {
         </div>
 
       </div>
+
+      {/* Lightbox Modal */}
+      {lightboxData && (
+        <div 
+          onClick={() => setLightboxData(null)}
+          className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-8 cursor-zoom-out"
+        >
+          <button
+            onClick={() => setLightboxData(null)}
+            className="absolute top-6 right-6 p-3 rounded-full bg-white/10 hover:bg-[#d81b60] text-white transition-colors"
+            aria-label="Close Lightbox"
+          >
+            <X className="h-6 w-6" />
+          </button>
+          
+          <div 
+            onClick={(e) => e.stopPropagation()}
+            className="max-w-5xl w-full aspect-[16/9] relative rounded-2xl overflow-hidden shadow-2xl border border-white/20 bg-white cursor-default"
+          >
+            <img
+              src={lightboxData.url}
+              alt={lightboxData.title}
+              referrerPolicy="no-referrer"
+              className="w-full h-full object-contain bg-white"
+            />
+          </div>
+        </div>
+      )}
     </section>
   );
 }

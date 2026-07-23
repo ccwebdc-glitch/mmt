@@ -63,16 +63,16 @@ export default function DayNightSlider() {
         
         {/* Section Header */}
         <div className="flex flex-col mb-16 sm:mb-24 text-center items-center" id="day-night-header">
-          <span className="text-xs font-mono uppercase tracking-[0.3em] text-electric-blue mb-3">
+          <span className="text-xs font-mono uppercase tracking-[0.3em] text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-400 font-semibold mb-3">
             05 // SPECIALIZED ADVANTAGE
           </span>
           <h2 className="text-4xl sm:text-6xl font-display font-light text-white tracking-tight leading-none mb-6">
             Brilliant by Day. <br />
-            <span className="text-electric-blue font-medium">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-orange-400 to-red-400 font-semibold">
               Extraordinary by Night.
             </span>
           </h2>
-          <div className="h-[2px] w-24 bg-mmt-blue shadow-[0_0_8px_rgba(0,71,255,0.8)] mb-6" />
+          <div className="h-[2px] w-24 bg-gradient-to-r from-red-500 via-orange-500 to-red-600 shadow-[0_0_8px_rgba(249,115,22,0.8)] mb-6" />
           
           <p className="text-gray-300 font-sans font-light max-w-4xl leading-relaxed text-sm sm:text-base text-center">
             Outdoor advertising should never lose its impact after sunset. MetroMedia Technologies MENA has developed an exclusive Double-Sided Backlit Printing Technology that delivers identical image brilliance, exceptional colour accuracy, and outstanding visibility during both daytime and nighttime viewing. Unlike conventional backlit graphics that appear dull or washed out after illumination, MMT's proprietary process ensures your campaign remains vibrant around the clock.
@@ -115,25 +115,25 @@ export default function DayNightSlider() {
             id="slider-container"
           >
             {/* 1. Day Side (Base Layer) */}
-            <div className="absolute inset-0 bg-gradient-to-b from-sky-950/20 to-black h-full w-full">
+            <div className="absolute inset-0 bg-stone-100 h-full w-full">
               <div className="absolute inset-0 flex flex-col justify-end p-8 sm:p-12">
-                <div className="w-full h-2/3 border-4 border-slate-700/80 rounded-2xl bg-[#030305] overflow-hidden relative shadow-2xl">
-                  <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent z-10" />
+                <div className="w-full h-2/3 border-4 border-stone-300 rounded-2xl bg-white overflow-hidden relative shadow-lg">
+                  <div className="absolute inset-0 bg-gradient-to-tr from-amber-100/30 via-stone-50 to-transparent z-10" />
                   
-                  <div className="absolute inset-0 flex items-center justify-between px-6 sm:px-16 bg-[#040406]">
+                  <div className="absolute inset-0 flex items-center justify-between px-6 sm:px-16 bg-white">
                     <div className="flex flex-col max-w-md">
-                      <span className="font-mono text-[9px] text-electric-blue uppercase tracking-widest mb-1">GCC OUTDOOR CAMPAIGN</span>
-                      <span className="font-display text-2xl sm:text-4xl text-white font-light tracking-wide leading-tight">Vibrant by Day.</span>
-                      <span className="text-[10px] text-gray-400 uppercase tracking-widest mt-2">MMT Acrylic Paint System // Premium PVC</span>
+                      <span className="font-mono text-[9px] text-amber-900 font-bold uppercase tracking-widest mb-1">GCC OUTDOOR CAMPAIGN</span>
+                      <span className="font-display text-2xl sm:text-4xl font-bold tracking-wide leading-tight text-zinc-950">Vibrant by Day.</span>
+                      <span className="text-[10px] text-zinc-700 font-semibold uppercase tracking-widest mt-2">MMT Acrylic Paint System // Premium PVC</span>
                     </div>
-                    <div className="h-40 w-40 rounded-full border border-white/10 flex items-center justify-center p-4 relative bg-black/40">
-                      <Sun className="h-12 w-12 text-yellow-500/80 animate-pulse" />
+                    <div className="h-40 w-40 rounded-full border border-amber-300 flex items-center justify-center p-4 relative bg-amber-100/80 shadow-md">
+                      <Sun className="h-12 w-12 text-amber-600 animate-pulse" />
                     </div>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-2 mt-4 text-gray-400 font-mono text-xs uppercase tracking-widest">
-                  <Sun className="h-4 w-4 text-yellow-500" /> Day View (Direct GCC Sun Exposure)
+                <div className="flex items-center gap-2 mt-4 text-zinc-900 font-mono text-xs uppercase tracking-widest font-bold">
+                  <Sun className="h-4 w-4 text-amber-600" /> Day View (Direct GCC Sun Exposure)
                 </div>
               </div>
             </div>
@@ -144,23 +144,23 @@ export default function DayNightSlider() {
               style={{ width: `${sliderPosition}%` }}
             >
               <div className="absolute inset-y-0 left-0 w-[1000px] h-full" style={{ width: containerRef.current?.getBoundingClientRect().width }}>
-                <div className="absolute inset-0 bg-gradient-to-b from-blue-950/40 to-black h-full w-full">
+                <div className="absolute inset-0 bg-black h-full w-full">
                   <div className="absolute inset-0 flex flex-col justify-end p-8 sm:p-12">
-                    <div className="w-full h-2/3 border-4 border-slate-900/90 rounded-2xl bg-black overflow-hidden relative shadow-[0_0_40px_rgba(10,92,255,0.4)]">
-                      <div className="absolute inset-0 flex items-center justify-between px-6 sm:px-16 bg-[#020203]">
+                    <div className="w-full h-2/3 border-4 border-zinc-800 rounded-2xl bg-zinc-950 overflow-hidden relative shadow-[0_0_40px_rgba(255,255,255,0.1)]">
+                      <div className="absolute inset-0 flex items-center justify-between px-6 sm:px-16 bg-black">
                         <div className="flex flex-col max-w-md">
-                          <span className="font-mono text-[9px] text-electric-blue uppercase tracking-widest mb-1">DOUBLE-SIDED REGISTRATION</span>
-                          <span className="font-display text-2xl sm:text-4xl text-white font-medium tracking-wide leading-tight glowing-text">Intense by Night.</span>
-                          <span className="text-[10px] text-electric-blue uppercase tracking-widest mt-2 font-semibold">ZERO SATURATION LOSS</span>
+                          <span className="font-mono text-[9px] text-orange-400 uppercase tracking-widest mb-1">DOUBLE-SIDED REGISTRATION</span>
+                          <span className="font-display text-2xl sm:text-4xl font-bold tracking-wide leading-tight text-white">Intense by Night.</span>
+                          <span className="text-[10px] text-gray-300 uppercase tracking-widest mt-2 font-semibold">ZERO SATURATION LOSS</span>
                         </div>
-                        <div className="h-40 w-40 rounded-full border border-electric-blue/30 flex items-center justify-center p-4 relative bg-mmt-blue/10 shadow-[0_0_25px_rgba(0,229,255,0.25)]">
-                          <Moon className="h-12 w-12 text-electric-blue animate-pulse" />
+                        <div className="h-40 w-40 rounded-full border border-zinc-700 flex items-center justify-center p-4 relative bg-zinc-900 shadow-[0_0_25px_rgba(255,255,255,0.15)]">
+                          <Moon className="h-12 w-12 text-white animate-pulse" />
                         </div>
                       </div>
                     </div>
 
-                    <div className="flex items-center gap-2 mt-4 text-electric-blue font-mono text-xs uppercase tracking-widest">
-                      <Moon className="h-4 w-4" /> Night View (Backlit Illuminated)
+                    <div className="flex items-center gap-2 mt-4 text-white font-mono text-xs uppercase tracking-widest font-bold">
+                      <Moon className="h-4 w-4 text-orange-400" /> Night View (Backlit Illuminated)
                     </div>
                   </div>
                 </div>
@@ -169,31 +169,31 @@ export default function DayNightSlider() {
 
             {/* 3. Interactive Vertical Control Bar */}
             <div
-              className="absolute inset-y-0 w-[2px] bg-electric-blue z-30 pointer-events-none"
+              className="absolute inset-y-0 w-[2px] bg-gradient-to-b from-red-500 via-orange-500 to-red-500 z-30 pointer-events-none shadow-[0_0_10px_rgba(249,115,22,0.8)]"
               style={{ left: `${sliderPosition}%` }}
             >
               <div
                 onMouseDown={onMouseDown}
                 onTouchStart={onTouchStart}
-                className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 h-10 w-10 rounded-full bg-black border-2 border-electric-blue flex items-center justify-center cursor-ew-resize pointer-events-auto slider-handle-glow hover:scale-110 transition-transform"
+                className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 h-10 w-10 rounded-full bg-black border-2 border-orange-500 flex items-center justify-center cursor-ew-resize pointer-events-auto shadow-[0_0_15px_rgba(239,68,68,0.6)] hover:scale-110 transition-transform"
                 id="slider-drag-handle"
               >
-                <MoveHorizontal className="h-5 w-5 text-electric-blue" />
+                <MoveHorizontal className="h-5 w-5 text-orange-400" />
               </div>
             </div>
           </div>
 
-          <div className="mt-6 flex flex-col sm:flex-row gap-6 text-gray-400 font-mono text-xs uppercase tracking-widest" id="slider-legend">
+          <div className="mt-6 flex flex-col sm:flex-row gap-6 text-orange-300/80 font-mono text-xs uppercase tracking-widest" id="slider-legend">
             <span className="flex items-center gap-2">
-              <Sun className="h-4 w-4 text-yellow-500" /> Drag Handle to Compare Day / Night
+              <Sun className="h-4 w-4 text-orange-400" /> Drag Handle to Compare Day / Night
             </span>
           </div>
         </div>
 
         {/* Why It Matters Callout */}
-        <div className="border border-white/5 bg-black/40 rounded-2xl p-8 mb-16 text-center" id="why-it-matters">
-          <h4 className="text-lg font-display font-light text-white mb-2 uppercase tracking-wider">Why It Matters</h4>
-          <p className="text-gray-400 text-sm font-light max-w-4xl mx-auto leading-relaxed">
+        <div className="border border-orange-500/20 bg-gradient-to-r from-red-950/30 via-black/40 to-orange-950/30 rounded-2xl p-8 mb-16 text-center" id="why-it-matters">
+          <h4 className="text-lg font-display font-medium text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-orange-400 mb-2 uppercase tracking-wider">Why It Matters</h4>
+          <p className="text-gray-300 text-sm font-light max-w-4xl mx-auto leading-relaxed">
             Outdoor advertising never sleeps. Your audience encounters your brand throughout the day and long after sunset. Whether displayed on highways, premium retail locations, airports, commercial districts, or landmark city installations, every advertisement should continue delivering maximum visual impact. MMT's Double-Sided Backlit Technology ensures your investment performs continuously—24 hours a day.
           </p>
         </div>
@@ -201,8 +201,8 @@ export default function DayNightSlider() {
         {/* Key Advantages Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full mt-12 border-t border-white/5 pt-12" id="backlit-specifications">
           
-          <div className="flex gap-4 bg-dark-graphite/30 p-6 rounded-2xl border border-white/5">
-            <CheckCircle className="h-5 w-5 text-electric-blue shrink-0 mt-0.5" />
+          <div className="flex gap-4 bg-dark-graphite/30 p-6 rounded-2xl border border-orange-500/15 hover:border-orange-500/40 transition-colors">
+            <CheckCircle className="h-5 w-5 text-orange-400 shrink-0 mt-0.5" />
             <div>
               <h4 className="text-white text-xs font-semibold uppercase tracking-wider">Exceptional Day & Night Performance</h4>
               <p className="text-xs text-gray-400 font-light mt-1.5 leading-relaxed">
@@ -211,8 +211,8 @@ export default function DayNightSlider() {
             </div>
           </div>
 
-          <div className="flex gap-4 bg-dark-graphite/30 p-6 rounded-2xl border border-white/5">
-            <CheckCircle className="h-5 w-5 text-electric-blue shrink-0 mt-0.5" />
+          <div className="flex gap-4 bg-dark-graphite/30 p-6 rounded-2xl border border-orange-500/15 hover:border-orange-500/40 transition-colors">
+            <CheckCircle className="h-5 w-5 text-orange-400 shrink-0 mt-0.5" />
             <div>
               <h4 className="text-white text-xs font-semibold uppercase tracking-wider">No Colour Loss at Night</h4>
               <p className="text-xs text-gray-400 font-light mt-1.5 leading-relaxed">
@@ -221,8 +221,8 @@ export default function DayNightSlider() {
             </div>
           </div>
 
-          <div className="flex gap-4 bg-dark-graphite/30 p-6 rounded-2xl border border-white/5">
-            <CheckCircle className="h-5 w-5 text-electric-blue shrink-0 mt-0.5" />
+          <div className="flex gap-4 bg-dark-graphite/30 p-6 rounded-2xl border border-orange-500/15 hover:border-orange-500/40 transition-colors">
+            <CheckCircle className="h-5 w-5 text-orange-400 shrink-0 mt-0.5" />
             <div>
               <h4 className="text-white text-xs font-semibold uppercase tracking-wider">Uniform Illumination</h4>
               <p className="text-xs text-gray-400 font-light mt-1.5 leading-relaxed">
@@ -231,8 +231,8 @@ export default function DayNightSlider() {
             </div>
           </div>
 
-          <div className="flex gap-4 bg-dark-graphite/30 p-6 rounded-2xl border border-white/5">
-            <CheckCircle className="h-5 w-5 text-electric-blue shrink-0 mt-0.5" />
+          <div className="flex gap-4 bg-dark-graphite/30 p-6 rounded-2xl border border-orange-500/15 hover:border-orange-500/40 transition-colors">
+            <CheckCircle className="h-5 w-5 text-orange-400 shrink-0 mt-0.5" />
             <div>
               <h4 className="text-white text-xs font-semibold uppercase tracking-wider">Superior Image Fidelity</h4>
               <p className="text-xs text-gray-400 font-light mt-1.5 leading-relaxed">
@@ -241,8 +241,8 @@ export default function DayNightSlider() {
             </div>
           </div>
 
-          <div className="flex gap-4 bg-dark-graphite/30 p-6 rounded-2xl border border-white/5">
-            <CheckCircle className="h-5 w-5 text-electric-blue shrink-0 mt-0.5" />
+          <div className="flex gap-4 bg-dark-graphite/30 p-6 rounded-2xl border border-orange-500/15 hover:border-orange-500/40 transition-colors">
+            <CheckCircle className="h-5 w-5 text-orange-400 shrink-0 mt-0.5" />
             <div>
               <h4 className="text-white text-xs font-semibold uppercase tracking-wider">Scratch Resistant Surface</h4>
               <p className="text-xs text-gray-400 font-light mt-1.5 leading-relaxed">
@@ -251,8 +251,8 @@ export default function DayNightSlider() {
             </div>
           </div>
 
-          <div className="flex gap-4 bg-dark-graphite/30 p-6 rounded-2xl border border-white/5">
-            <CheckCircle className="h-5 w-5 text-electric-blue shrink-0 mt-0.5" />
+          <div className="flex gap-4 bg-dark-graphite/30 p-6 rounded-2xl border border-orange-500/15 hover:border-orange-500/40 transition-colors">
+            <CheckCircle className="h-5 w-5 text-orange-400 shrink-0 mt-0.5" />
             <div>
               <h4 className="text-white text-xs font-semibold uppercase tracking-wider">Designed for Large-Scale</h4>
               <p className="text-xs text-gray-400 font-light mt-1.5 leading-relaxed">
@@ -267,9 +267,9 @@ export default function DayNightSlider() {
         <div className="mt-16 text-center border-t border-white/5 pt-12">
           <p className="text-2xl sm:text-3xl font-display font-light text-white">
             "One Advertisement. Two Experiences. <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-blue-400 font-semibold glowing-text">The Same Extraordinary Visual Impact.</span>"
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-orange-400 to-red-400 font-semibold">The Same Extraordinary Visual Impact.</span>"
           </p>
-          <span className="text-xs font-mono uppercase tracking-widest text-gray-500 mt-4 block">This is the difference engineering makes.</span>
+          <span className="text-xs font-mono uppercase tracking-widest text-orange-400/70 mt-4 block">This is the difference engineering makes.</span>
         </div>
 
       </div>

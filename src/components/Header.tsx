@@ -16,6 +16,7 @@ const NAV_ITEMS: NavItem[] = [
   { label: "Day & Night", targetId: "day-night" },
   { label: "MMT vs Others", targetId: "mmt-comparison" },
   { label: "Projects", targetId: "projects" },
+  { label: "Work Slide", targetId: "work-showcase" },
   { label: "Presence", targetId: "presence" },
   { label: "Contact", targetId: "contact" }
 ];
@@ -73,55 +74,55 @@ export default function Header() {
           : "bg-transparent border-b border-[#1b2234]/10 py-6"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-16 xl:px-24 flex items-center justify-between">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 flex items-center justify-between gap-2 xl:gap-4 flex-nowrap w-full">
         {/* Dynamic Logo */}
         <a
           href="#home"
           onClick={(e) => handleNavClick(e, "home")}
-          className="hover:opacity-90 transition-opacity"
+          className="hover:opacity-90 transition-opacity shrink-0 flex items-center"
           id="header-logo-link"
         >
-          <Logo className="h-9 sm:h-11" />
+          <Logo className="h-8 sm:h-9 xl:h-10 w-auto" />
         </a>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden xl:flex items-center gap-1" id="desktop-nav">
+        {/* Desktop Navigation - Strictly One Line */}
+        <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1.5 flex-nowrap whitespace-nowrap overflow-x-auto no-scrollbar py-1" id="desktop-nav">
           {NAV_ITEMS.map((item) => (
             <a
               key={item.targetId}
               href={`#${item.targetId}`}
               onClick={(e) => handleNavClick(e, item.targetId)}
-              className={`px-3 py-2 text-xs uppercase tracking-[0.15em] transition-all duration-300 relative font-medium ${
+              className={`px-2 xl:px-3 py-1.5 text-[11px] xl:text-xs uppercase tracking-[0.12em] transition-all duration-300 relative font-medium shrink-0 font-display ${
                 activeSection === item.targetId
-                  ? "text-electric-blue font-semibold"
-                  : "text-gray-400 hover:text-white"
+                  ? "text-[#0090e7] font-semibold"
+                  : "text-[#1b2234] hover:text-[#f25c05]"
               }`}
             >
               {item.label}
               {activeSection === item.targetId && (
-                <span className="absolute bottom-0 left-3 right-3 h-[2px] bg-electric-blue shadow-[0_0_8px_rgba(0,229,255,0.8)]" />
+                <span className="absolute bottom-0 left-2 right-2 h-[2px] bg-gradient-to-r from-[#0090e7] via-[#f25c05] to-[#d81b60] rounded-full shadow-[0_0_8px_rgba(0,144,231,0.5)]" />
               )}
             </a>
           ))}
         </nav>
 
         {/* Action Button */}
-        <div className="hidden lg:flex items-center gap-4">
+        <div className="hidden lg:flex items-center gap-3 shrink-0">
           <a
             href="#contact"
             onClick={(e) => handleNavClick(e, "contact")}
-            className="group px-5 py-2.5 rounded-full border border-mmt-blue/30 text-xs uppercase tracking-widest font-semibold text-white bg-mmt-blue/10 hover:bg-mmt-blue hover:border-mmt-blue hover:text-white transition-all duration-300 flex items-center gap-2 shadow-[0_0_15px_rgba(10,92,255,0.1)]"
+            className="group px-4 xl:px-5 py-2 rounded-full border border-orange-400/50 text-[11px] xl:text-xs uppercase tracking-widest font-bold text-white bg-gradient-to-r from-[#f25c05] via-orange-500 to-[#e04800] hover:from-orange-600 hover:to-red-600 transition-all duration-300 flex items-center gap-1.5 whitespace-nowrap shadow-[0_4px_15px_rgba(242,92,5,0.35)] hover:shadow-[0_4px_25px_rgba(242,92,5,0.55)] font-display shrink-0"
             id="header-cta"
           >
-            Inquire Now
-            <ArrowUpRight className="h-3.5 w-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            <span>Inquire Now</span>
+            <ArrowUpRight className="h-3.5 w-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-white" />
           </a>
         </div>
 
         {/* Mobile Navigation Toggle */}
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="xl:hidden p-2 text-gray-400 hover:text-white transition-colors"
+          className="lg:hidden p-2 text-[#1b2234] hover:text-[#f25c05] transition-colors shrink-0"
           aria-label="Toggle menu"
           id="mobile-menu-toggle"
         >

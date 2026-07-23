@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { TECH_CHAPTERS } from "../data";
-import { ShieldCheck, Cpu, Layers, Zap, Info, Shield, CheckCircle, Flame, MessageSquare, ArrowRight } from "lucide-react";
+import { ShieldCheck, Cpu, Layers, Zap, Info, Shield, CheckCircle, Flame, MessageSquare, ArrowRight, ZoomIn, X } from "lucide-react";
+import roboticStationImg from "../assets/images/robotic_station.png";
 
 export default function Technology() {
   const [activeChapterIndex, setActiveChapterIndex] = useState(0);
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
 
   const activeChapter = TECH_CHAPTERS[activeChapterIndex];
 
@@ -119,7 +121,7 @@ export default function Technology() {
 
         {/* Interactive Active Chapter Block */}
         <div
-          className="grid grid-cols-1 lg:grid-cols-12 gap-12 bg-dark-graphite/50 border border-white/5 rounded-3xl p-8 sm:p-12 relative overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.8)]"
+          className="w-full bg-dark-graphite/50 border border-white/5 rounded-3xl p-8 sm:p-12 relative overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.8)]"
           id="tech-chapter-container"
         >
           {/* Subtle water-mark of chapter number */}
@@ -127,9 +129,9 @@ export default function Technology() {
             0{activeChapterIndex + 1}
           </div>
 
-          {/* Left Block: Narrative Copy */}
-          <div className="lg:col-span-7 flex flex-col justify-between relative z-10" id="tech-narrative-block">
-            <div>
+          {/* Narrative Copy & Specs Horizontal Layout */}
+          <div className="w-full flex flex-col lg:flex-row items-start justify-between gap-8 lg:gap-12 relative z-10" id="tech-narrative-block">
+            <div className="w-full lg:w-7/12">
               <div className="flex items-center gap-3 mb-4">
                 <span className="text-[10px] font-mono text-electric-blue tracking-widest uppercase bg-electric-blue/10 px-3 py-1 rounded-full border border-electric-blue/20">
                   {activeChapter.accentText}
@@ -146,107 +148,58 @@ export default function Technology() {
                 {activeChapter.tagline}
               </p>
 
-              <p className="text-sm sm:text-base text-gray-300 leading-relaxed font-light mb-8 max-w-2xl">
+              <p className="text-sm sm:text-base text-gray-300 leading-relaxed font-light max-w-2xl">
                 {activeChapter.description}
               </p>
             </div>
 
-            {/* Premium Bullet Specs */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4" id="tech-highlight-specs">
-              {activeChapter.highlightSpecs.map((spec, i) => (
-                <div key={i} className="flex items-start gap-3 bg-black/30 p-4 rounded-xl border border-white/5">
-                  <CheckCircle className="h-4.5 w-4.5 text-electric-blue shrink-0 mt-0.5" />
-                  <span className="text-xs sm:text-sm text-gray-200 font-light leading-snug">
-                    {spec}
-                  </span>
-                </div>
-              ))}
+            {/* Premium Bullet Specs Horizontally Positioned */}
+            <div className="w-full lg:w-5/12 shrink-0" id="tech-highlight-specs">
+              <div className="text-[10px] font-mono text-gray-400 tracking-widest uppercase mb-3 flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-electric-blue animate-pulse" />
+                Key Technical Highlights
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-4">
+                {activeChapter.highlightSpecs.map((spec, i) => (
+                  <div key={i} className="flex items-start gap-3 bg-black/40 p-4 rounded-xl border border-white/5 hover:border-electric-blue/30 transition-colors">
+                    <CheckCircle className="h-4.5 w-4.5 text-electric-blue shrink-0 mt-0.5" />
+                    <span className="text-xs sm:text-sm text-gray-200 font-light leading-snug">
+                      {spec}
+                    </span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 
-          {/* Right Block: Dynamic Schematic Visualization */}
-          <div className="lg:col-span-5 flex flex-col justify-center relative z-10" id="tech-visualization-block">
-            <div className="border border-white/5 bg-black/60 rounded-2xl p-6 h-full flex flex-col justify-between min-h-[300px] relative overflow-hidden group">
-              <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#0A5CFF_1px,transparent_1px)] [background-size:16px_16px]" />
+          {/* Horizontal Facility & Blueprint Image Showcase Section */}
+          <div className="w-full mt-8 pt-8 border-t border-white/10 relative z-10" id="tech-horizontal-image-section">
+            <div 
+              onClick={() => setIsLightboxOpen(true)}
+              className="group relative w-full rounded-2xl overflow-hidden border border-white/15 bg-black/80 shadow-2xl cursor-pointer transition-all duration-500 hover:border-electric-blue/60 hover:shadow-[0_10px_35px_rgba(0,229,255,0.25)]"
+            >
+              <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#0A5CFF_1px,transparent_1px)] [background-size:20px_20px] pointer-events-none z-10" />
               
-              {/* Custom Blueprint Diagram per Chapter */}
-              <div className="flex-grow flex items-center justify-center py-6 relative">
-                {activeChapterIndex === 0 && (
-                  /* Acrylic Paint Tech Visualization */
-                  <div className="w-full text-center relative">
-                    <div className="absolute -inset-10 bg-radial-gradient from-mmt-blue/20 to-transparent blur-xl" />
-                    <svg viewBox="0 0 200 120" className="w-48 h-auto mx-auto text-electric-blue" fill="none">
-                      <rect x="10" y="80" width="180" height="15" rx="2" fill="rgba(255,255,255,0.05)" stroke="currentColor" strokeWidth="1" />
-                      <rect x="10" y="60" width="180" height="18" rx="2" fill="rgba(0,229,255,0.15)" stroke="var(--color-electric-blue)" strokeWidth="1.5" strokeDasharray="3 1" />
-                      <circle cx="100" cy="15" r="10" stroke="#FFD700" strokeWidth="1" />
-                      <line x1="100" y1="30" x2="100" y2="45" stroke="#FFD700" strokeWidth="1" />
-                      <line x1="85" y1="20" x2="70" y2="30" stroke="#FFD700" strokeWidth="1" />
-                      <line x1="115" y1="20" x2="130" y2="30" stroke="#FFD700" strokeWidth="1" />
-                      <path d="M 50 50 Q 55 45 60 50" stroke="var(--color-electric-blue)" strokeWidth="1.5" fill="none" />
-                      <path d="M 100 50 Q 105 45 110 50" stroke="var(--color-electric-blue)" strokeWidth="1.5" fill="none" />
-                      <path d="M 150 50 Q 155 45 160 50" stroke="var(--color-electric-blue)" strokeWidth="1.5" fill="none" />
-                      <text x="100" y="110" fill="currentColor" fontSize="8" textAnchor="middle" fontFamily="monospace" letterSpacing="1">ACRYLIC RESIN COATING</text>
-                    </svg>
-                  </div>
-                )}
+              <div className="relative w-full overflow-hidden bg-black/90 rounded-xl p-2 sm:p-4 flex items-center justify-center min-h-[220px] sm:min-h-[320px] md:min-h-[380px]">
+                <img
+                  src={roboticStationImg}
+                  alt={`${activeChapter.title} Production Facility`}
+                  referrerPolicy="no-referrer"
+                  className="w-full h-auto max-h-[420px] sm:max-h-[500px] object-contain mx-auto transition-transform duration-700 ease-out group-hover:scale-[1.02]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none z-10" />
 
-                {activeChapterIndex === 1 && (
-                  /* Robotic Drum Technology Visualization */
-                  <div className="w-full text-center">
-                    <svg viewBox="0 0 200 120" className="w-48 h-auto mx-auto text-mmt-blue" fill="none">
-                      <circle cx="100" cy="60" r="45" stroke="currentColor" strokeWidth="1.5" strokeDasharray="4 2" />
-                      <circle cx="100" cy="60" r="35" stroke="var(--color-electric-blue)" strokeWidth="1" />
-                      <circle cx="100" cy="60" r="5" fill="currentColor" />
-                      <line x1="100" y1="5" x2="100" y2="15" stroke="var(--color-electric-blue)" strokeWidth="1.5" />
-                      <line x1="55" y1="60" x2="45" y2="60" stroke="var(--color-electric-blue)" strokeWidth="1.5" />
-                      <path d="M 95 10 L 105 10 L 100 22 Z" fill="var(--color-electric-blue)" />
-                      <circle cx="100" cy="30" r="2" fill="var(--color-electric-blue)" className="animate-ping" />
-                      <text x="100" y="115" fill="currentColor" fontSize="8" textAnchor="middle" fontFamily="monospace" letterSpacing="1">ROBOTECH STEP SYSTEM</text>
-                    </svg>
-                  </div>
-                )}
-
-                {activeChapterIndex === 2 && (
-                  /* Double-Sided Backlit Visualization */
-                  <div className="w-full text-center">
-                    <svg viewBox="0 0 200 120" className="w-48 h-auto mx-auto text-electric-blue" fill="none">
-                      <rect x="20" y="45" width="25" height="30" rx="2" fill="rgba(10, 92, 255, 0.2)" stroke="var(--color-mmt-blue)" />
-                      <rect x="155" y="45" width="25" height="30" rx="2" fill="rgba(10, 92, 255, 0.2)" stroke="var(--color-mmt-blue)" />
-                      <line x1="100" y1="10" x2="100" y2="110" stroke="currentColor" strokeWidth="3" />
-                      <line x1="45" y1="60" x2="98" y2="60" stroke="currentColor" strokeWidth="1" strokeDasharray="3 3" />
-                      <line x1="155" y1="60" x2="102" y2="60" stroke="currentColor" strokeWidth="1" strokeDasharray="3 3" />
-                      <circle cx="100" cy="60" r="6" fill="var(--color-electric-blue)" className="animate-pulse" />
-                      <text x="100" y="115" fill="currentColor" fontSize="8" textAnchor="middle" fontFamily="monospace" letterSpacing="1">100% REGISTRATION ALIGN</text>
-                    </svg>
-                  </div>
-                )}
-
-                {activeChapterIndex === 3 && (
-                  /* RF Welding Visualization */
-                  <div className="w-full text-center">
-                    <svg viewBox="0 0 200 120" className="w-48 h-auto mx-auto text-mmt-blue" fill="none">
-                      <line x1="15" y1="70" x2="110" y2="70" stroke="currentColor" strokeWidth="3" />
-                      <line x1="90" y1="62" x2="185" y2="62" stroke="currentColor" strokeWidth="3" />
-                      <rect x="90" y="58" width="20" height="16" fill="rgba(0, 229, 255, 0.2)" stroke="var(--color-electric-blue)" strokeWidth="1" />
-                      <path d="M 93 54 Q 96 46 100 54 Q 104 46 107 54" stroke="var(--color-electric-blue)" strokeWidth="1.5" fill="none" />
-                      <text x="100" y="115" fill="currentColor" fontSize="8" textAnchor="middle" fontFamily="monospace" letterSpacing="1">RF MOLECULAR FUSION</text>
-                    </svg>
-                  </div>
-                )}
-              </div>
-
-              {/* Descriptions & Specs of visual */}
-              <div className="border-t border-white/5 pt-4">
-                <div className="text-[10px] text-gray-500 font-mono uppercase mb-1">
-                  Blueprint Metadata
+               
+                {/* Zoom Interactive Overlay */}
+                <div className="absolute bottom-4 right-4 z-20 flex items-center gap-2 px-3 py-1.5 rounded-lg bg-black/80 border border-white/20 text-xs font-mono text-white backdrop-blur-md group-hover:bg-electric-blue group-hover:border-electric-blue transition-all shadow-xl">
+                  <ZoomIn className="h-4 w-4" />
+                  <span>Click to Expand High-Res</span>
                 </div>
-                <div className="text-xs text-gray-300 font-light italic leading-snug">
-                  {activeChapter.imagePlaceholderDesc}
-                </div>
+
+
               </div>
             </div>
           </div>
-
         </div>
 
         {/* Support Infrastructure Horizontal Panel */}
@@ -300,31 +253,32 @@ export default function Technology() {
         </div>
 
         {/* Technology CTA Section */}
-        <div className="mt-24 border border-white/10 rounded-3xl bg-gradient-to-br from-dark-graphite/60 via-black to-dark-graphite/30 p-8 sm:p-16 relative overflow-hidden" id="tech-cta-panel">
-          <div className="absolute top-0 right-0 w-[400px] h-[400px] rounded-full radial-glow opacity-10 pointer-events-none" />
+        <div className="mt-24 border border-[#E3D8C8] rounded-3xl bg-gradient-to-br from-[#FAF8F5] via-[#F4EFE6] to-[#E6DDD0] p-8 sm:p-16 relative overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.3)] text-zinc-900" id="tech-cta-panel">
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-radial-gradient from-amber-200/40 via-amber-100/20 to-transparent blur-3xl opacity-80 pointer-events-none" />
+          <div className="absolute -bottom-20 -left-20 w-[400px] h-[400px] rounded-full bg-radial-gradient from-stone-300/30 to-transparent blur-3xl pointer-events-none" />
           
           <div className="relative z-10 max-w-4xl">
-            <span className="text-xs font-mono text-electric-blue uppercase tracking-widest block mb-3">
+            <span className="text-xs font-mono text-amber-900 uppercase tracking-widest block mb-3 font-semibold">
               ENGINEERING EXCELLENCE
             </span>
-            <h3 className="text-3xl sm:text-5xl font-display font-light text-white tracking-tight leading-tight mb-6">
+            <h3 className="text-3xl sm:text-5xl font-display font-light text-zinc-900 tracking-tight leading-tight mb-6">
               Experience the Technology Behind <br />
-              <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-300 to-gray-500">Every Landmark Campaign.</span>
+              <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-amber-950 via-stone-800 to-amber-900">Every Landmark Campaign.</span>
             </h3>
-            <p className="text-gray-400 text-sm sm:text-base font-light leading-relaxed mb-8">
+            <p className="text-stone-700 text-sm sm:text-base font-normal leading-relaxed mb-8">
               Every billboard. Every luxury retail display. Every architectural installation. Every premium outdoor media campaign begins with engineering excellence inside MetroMedia Technologies MENA. Partner with us and discover why leading brands across the GCC and MENA trust our technology to deliver extraordinary visual experiences.
             </p>
             
             <div className="flex flex-wrap gap-4">
               <a
                 href="#portfolio"
-                className="inline-flex items-center gap-2 bg-electric-blue hover:bg-electric-blue/90 text-black font-semibold text-xs sm:text-sm uppercase tracking-wider px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl transition-all duration-300 shadow-[0_4px_20px_rgba(0,229,255,0.25)] hover:shadow-[0_4px_30px_rgba(0,229,255,0.4)]"
+                className="inline-flex items-center gap-2 bg-zinc-900 hover:bg-zinc-800 text-stone-100 font-semibold text-xs sm:text-sm uppercase tracking-wider px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl transition-all duration-300 shadow-[0_4px_20px_rgba(28,25,23,0.25)] hover:shadow-[0_4px_30px_rgba(28,25,23,0.4)]"
               >
                 Explore Our Projects <ArrowRight className="h-4 w-4" />
               </a>
               <a
                 href="#contact"
-                className="inline-flex items-center gap-2 bg-transparent hover:bg-white/5 text-white border border-white/20 hover:border-white/40 font-semibold text-xs sm:text-sm uppercase tracking-wider px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl transition-all duration-300"
+                className="inline-flex items-center gap-2 bg-stone-200/80 hover:bg-stone-300/90 text-zinc-900 border border-stone-400/50 font-semibold text-xs sm:text-sm uppercase tracking-wider px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl transition-all duration-300"
               >
                 Speak with Our Experts <MessageSquare className="h-4 w-4" />
               </a>
@@ -333,6 +287,41 @@ export default function Technology() {
         </div>
 
       </div>
+
+      {/* High-Resolution Full-Screen Lightbox Modal */}
+      {isLightboxOpen && (
+        <div 
+          className="fixed inset-0 z-50 bg-black/95 backdrop-blur-xl flex items-center justify-center p-4 sm:p-8 animate-in fade-in duration-200"
+          onClick={() => setIsLightboxOpen(false)}
+        >
+          <button
+            onClick={() => setIsLightboxOpen(false)}
+            className="absolute top-6 right-6 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all z-50 border border-white/20"
+            title="Close Lightbox"
+          >
+            <X className="h-6 w-6" />
+          </button>
+          <div 
+            className="relative max-w-6xl w-full max-h-[90vh] flex flex-col items-center justify-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              src={roboticStationImg}
+              alt="MMT Acrylic Paint & Printing Facility Station 1 & 2"
+              referrerPolicy="no-referrer"
+              className="w-full h-auto max-h-[80vh] object-contain rounded-2xl border border-white/20 shadow-2xl bg-black"
+            />
+            <div className="mt-4 text-center">
+              <h4 className="text-sm sm:text-base font-display font-medium text-white">
+                MMT Dual Printing Station Facility
+              </h4>
+              <p className="text-xs font-mono text-electric-blue mt-1">
+                Station 1 & Station 2 Robotic Drum & Acrylic Paint Engineering
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
